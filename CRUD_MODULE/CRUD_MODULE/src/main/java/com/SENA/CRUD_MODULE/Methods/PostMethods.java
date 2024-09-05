@@ -22,8 +22,13 @@ public class PostMethods {
                                      @RequestParam("passwordConfirmation") String password2,
                                      Model model) {
         // Verificar si las contraseñas coinciden
+        if (password1.length() < 8){
+            model.addAttribute("error", "Password must be avobe 8 characters");
+            return "userForm"; 
+        }
+        
         if (!password1.equals(password2)) {
-            model.addAttribute("error", "Las contraseñas no coinciden");
+            model.addAttribute("error", "passsword mismatch");
             return "userForm";  // Volver a la vista del formulario si las contraseñas no coinciden
         }
 
@@ -46,8 +51,13 @@ public class PostMethods {
     {
         
         try {
+            if (password1.length() < 8){
+                model.addAttribute("error", "Password must be avobe 8 characters");
+                return "userForm"; 
+            }
+
             if (!password1.equals(password2)) {
-                model.addAttribute("error", "Las contraseñas no coinciden");
+                model.addAttribute("error", "passsword mismatch");
                 return "userPOST";  // Volver a la vista del formulario si las contraseñas no coinciden
             }
 
@@ -59,6 +69,7 @@ public class PostMethods {
             return "redirect:/Home";
 
         } catch (Exception e) {
+            model.addAttribute("error", "The number must contain only numbers in it");
             return "userPOST";
         }
 
@@ -67,6 +78,11 @@ public class PostMethods {
     @PostMapping("/user-delete/")
     public String deleteUser(@RequestParam("username") String username, @RequestParam("delete") int number, Model model) {
         
+        if (number < 0){
+            model.addAttribute("error", "The number must contain only numbers greatter or equal than 0");
+            return "userDelete";
+        }
+
         if (userCrud.getUser(username).getId() == number){
             userCrud.delete(userCrud.getUser(username));
             return "redirect:/Home";    
