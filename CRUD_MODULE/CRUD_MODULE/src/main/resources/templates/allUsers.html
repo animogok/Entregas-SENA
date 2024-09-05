@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+</head>
+<body>
+    <nav>
+        <a href="/Home"></a>
+    </nav>
+
+    <main>
+        <h1>ALL USERS - admin module -</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Number</th>
+                    <th>Register Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${user}">
+                    <td th:text="${user.name}">Name</td>
+                    <td th:text="${user.surname}">Surname</td>
+                    <td th:text="${user.email}">Email</td>
+                    <td th:text="${user.number}">Number</td>
+                    <td th:text="${user.register_date}">Register Date</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Usuario Encontrado</title>
+</head>
+<nav>
+    <a href="/Home"></a>
+</nav>
+<body>
+
+    <h1>USER FOUNDED</h1>
+
+    <p>User name: <span th:text="${user.getName()}"></span></p>
+    <p>User email: <span th:text="${user.getEmail()}"></span></p>
+    <p>User number: <span th:text="${user.getNumber()}"></span></p>
+
+    <!-- Puedes agregar más información del usuario según sea necesario -->
+
+</body>
+</html>
