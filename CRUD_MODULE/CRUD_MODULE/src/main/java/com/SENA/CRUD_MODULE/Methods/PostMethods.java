@@ -53,7 +53,7 @@ public class PostMethods {
         try {
             if (password1.length() < 8){
                 model.addAttribute("error", "Password must be avobe 8 characters");
-                return "userForm"; 
+                return "redirect:/"; 
             }
 
             if (!password1.equals(password2)) {
